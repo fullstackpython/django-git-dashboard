@@ -15,6 +15,7 @@ class GitCommit(models.Model):
     author_name = models.CharField(max_length=256)
     author_email = models.CharField(max_length=256)
     commit_date = models.DateTimeField()
+    parents = models.ManyToManyField('GitCommit')
 
     def __unicode__(self):
         return checksum_hash
