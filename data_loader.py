@@ -1,11 +1,17 @@
 import os
 from git import Repo
+from analyzer.models import GitRepository, GitCommit
 
 
-def parse_commit(commit):
+def print_commit(commit):
     print("\"{}\" by {}".format(commit.summary, commit.author.name))
     print(str(commit.authored_datetime))
     print(str(commit.size))
+
+
+def create_commit(commit):
+    gc = GitCommit()
+    return gc
 
 
 if __name__ == "__main__":
@@ -18,10 +24,10 @@ if __name__ == "__main__":
 
     # check out last commit
     last_commit = repo.head.commit
-    parse_commit(last_commit)
+    print_commit(last_commit)
 
     # go through all commits
     commits = list(repo.iter_commits('master'))
     for commit in commits:
-        parse_commit(commit)
+        print_commit(commit)
 
