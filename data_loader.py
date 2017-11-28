@@ -6,7 +6,9 @@ from git import Repo
 def print_commit(commit):
     print('----')
     print(str(commit.hexsha))
-    print("\"{}\" by {}".format(commit.summary, commit.author.name))
+    print("\"{}\" by {} ({})".format(commit.summary,
+                                     commit.author.name,
+                                     commit.author.email))
     print(str(commit.authored_datetime))
     print(str("count: {} and size: {}".format(commit.count(),
                                               commit.size)))
@@ -17,6 +19,11 @@ def create_commit(commit):
     gc = GitCommit()
     gc.checksum_hash = commit.hexsha
     gc.count = commit.count()
+    gc.author_name = commit.author.name
+    gc.author_email = commit.author.email
+    gc.commit_date = commit.authored_datetime
+    # TODO: check for parents and add them
+    gc.save()
     return gc
 
 
