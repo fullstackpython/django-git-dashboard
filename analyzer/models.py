@@ -12,6 +12,7 @@ class GitRepository(models.Model):
 class GitCommit(models.Model):
     """A single Git commit and its metadata."""
     checksum_hash = models.CharField(max_length=40)
+    count = models.IntegerField()
     author_name = models.CharField(max_length=256)
     author_email = models.CharField(max_length=256)
     commit_date = models.DateTimeField()
