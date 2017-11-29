@@ -15,6 +15,13 @@ def print_commit(commit):
     print(str(commit.size))
 
 
+def create_repository(repo):
+    repo = GitRepository()
+
+    repo.save()
+    return repo
+
+
 def create_commit(commit):
     gc = GitCommit()
     gc.checksum_hash = commit.hexsha
@@ -32,6 +39,7 @@ if __name__ == "__main__":
     repo_path = os.getenv('GIT_REPO_PATH')
 
     repo = Repo(repo_path)
+
 
     if not repo.bare:
         print('Repo at {} successfully loaded.'.format(repo_path))
