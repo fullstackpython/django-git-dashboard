@@ -96,4 +96,3 @@ db.sqlite3
 deploy/*.retry
 credentials/fsg.pem
 dump.rdb
-Dockerfile
