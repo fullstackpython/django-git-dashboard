@@ -11,7 +11,7 @@ class GitRepository(models.Model):
 
 class GitCommit(models.Model):
     """A single Git commit and its metadata."""
-    repository = models.ForeignKey('GitRepository')
+    repository = models.ForeignKey('GitRepository', on_delete=models.PROTECT)
     checksum_hash = models.CharField(max_length=40)
     count = models.IntegerField()
     summary = models.TextField(blank=True)
